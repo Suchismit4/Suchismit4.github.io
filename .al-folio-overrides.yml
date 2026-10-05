@@ -1,0 +1,17 @@
+---
+version: 1
+overrides:
+  _includes/news.liquid:
+    owner: al_folio_core
+    gem_version: 1.0.15
+    upstream_path: _includes/news.liquid
+    upstream_sha256: 2a37611539b5b3d59050cc20b8d008ca070e253d953724f6499a422e9b186f63
+    local_sha256: 85af750bd053a7fd9f430a75fd6a3db2f51d6212bf90af1ba51705e9df9bec45
+    acknowledged_at: "2026-10-05"
+  assets/css/main.scss:
+    owner: al_folio_core
+    gem_version: 1.0.15
+    upstream_path: assets/css/main.scss
+    upstream_sha256: 437c6c911c596391413e435dc0ea7095e682e85c572c1fd3fff69f9597455b3e
+    local_sha256: 7ab11387c29786b8647d82f2d88c2d6eb4367b5643df8211ab59132354692082
+    acknowledged_at: "2026-10-05"

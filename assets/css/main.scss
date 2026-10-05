@@ -1,39 +1,134 @@
 ---
+# Only the main Sass file needs front matter (the dashes are enough)
 ---
 
-/*
- * This file controls what is imported from /_sass
- *
- * Note that the files are processed in the order they are imported, so they are partly
-   sorted by the dependencies. Also, the first two lines of the file are required by Jekyll.
- */
+@charset "utf-8";
 
-@import
-    "vendor/breakpoint/breakpoint",
+/* Built-in Sass modules you’ll likely use across partials */
+@use "sass:math";
+@use "sass:string";
 
-    "themes",
-    "theme/{{ site.site_theme | default: 'default' | append: '_light' }}",
-    "theme/{{ site.site_theme | default: 'default' | append: '_dark' }}",
+/* Configure your design tokens BEFORE loading any of your partials.
+   Make sure `_sass/_variables.scss` declares `$max-content-width: 72rem !default;` */
+@use "variables" with (
+  $max-content-width: {{site.max_width | default: "930px"}}
+);
 
-    "include/mixins",
-    "vendor/susy/susy",
+/* Your project partials — convert these files to `@use "variables";`
+   (or `@use "variables" as *;`) inside each file and qualify variables if needed. */
+@use "themes";
+@use "layout";
 
-    "layout/reset",
-    "layout/base",
+// Core styles organized by usage
+@use "typography";
+@use "navbar";
+@use "footer";
+@use "blog";
+@use "publications";
+@use "components";
+@use "utilities";
 
-    "include/utilities",
-    "layout/tables",
-    "layout/buttons",
-    "layout/notices",
-    "layout/masthead",
-    "layout/navigation",
-    "layout/footer",
-    "syntax",
+// Other specialized styles
+@use "tabs";
+@use "teachings";
+@use "typograms";
 
-    "layout/forms",
+// Small personal refinements; layout and responsive behavior remain al-folio's.
+:root {
+  --global-text-color: #343937;
+  --global-text-color-light: #68706b;
+  --global-theme-color: #496b61;
+  --global-hover-color: #304c43;
+  --global-divider-color: rgba(52, 57, 55, 0.12);
+}
 
-    "layout/page",
-    "layout/archive",
-    "layout/sidebar",
-    "layout/json_cv"
-;
+html[data-theme="dark"] {
+  --global-text-color: #e0e4e1;
+  --global-text-color-light: #a2ada7;
+  --global-theme-color: #a8c5b9;
+  --global-hover-color: #c6ddd3;
+  --global-divider-color: rgba(224, 228, 225, 0.16);
+}
+
+body {
+  line-height: 1.65;
+}
+
+.post-header {
+  margin-bottom: 2.25rem;
+}
+
+.post-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 4vw, 2.65rem);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+
+  .font-weight-bold {
+    font-weight: 400 !important;
+  }
+}
+
+.post-header .desc,
+.navbar .nav-link {
+  color: var(--global-text-color-light);
+}
+
+.profile img {
+  border: 1px solid var(--global-divider-color);
+  border-radius: 2px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+}
+
+.profile .more-info {
+  margin-top: 0.65rem;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--global-text-color-light);
+}
+
+.post article > h2:has(+ .news) {
+  margin-top: 2.75rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--global-divider-color);
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.news th {
+  width: 14% !important;
+  font-weight: 400;
+  color: var(--global-text-color-light);
+}
+
+.news td {
+  color: var(--global-text-color);
+}
+
+.social {
+  margin-top: 2rem;
+  text-align: left;
+
+  .contact-icons {
+    font-size: 1.4rem;
+
+    a {
+      margin-right: 0.65rem;
+      color: var(--global-text-color-light);
+    }
+  }
+}
+
+footer:not(.fixed-bottom) {
+  font-size: 0.75rem;
+  color: var(--global-text-color-light);
+}
+
+@media (max-width: 575.98px) {
+  .profile.float-right {
+    float: none !important;
+    max-width: 220px;
+    margin: 0 0 1.5rem;
+  }
+}

@@ -1,0 +1,34 @@
+cv:
+  name: Suchismit Ghosh
+  label: Computer Science and Statistics Student
+  location: College Park, MD
+  summary: Machine learning systems, computational research infrastructure, and empirical asset pricing.
+  social_networks:
+    - network: GitHub
+      username: Suchismit4
+    - network: LinkedIn
+      username: sitghosh
+  sections:
+    Education:
+      - institution: University of Maryland
+        location: College Park, MD
+        area: Computer Science and Statistics
+    Experience:
+      - company: University of Maryland
+        position: Research Assistant with Prof. Serhiy Kozak
+        date: "2026"
+        summary: Working on machine learning and empirical asset pricing.
+      - company: Wermers Consulting
+        position: Quantitative Research
+        date: "2026"
+        summary: Working on large-scale CRSP/Compustat research pipelines.
+      - company: University of Maryland
+        position: Teaching Assistant
+        date: "2026"
+    Projects:
+      - name: Hindsight
+        url: https://suchismit.me/work/hindsight/
+        summary: Research infrastructure for empirical asset pricing and machine-learning experiments, using JAX/XLA-based pipelines, large financial panels, factor computation, backtesting, and model experimentation.
+      - name: NULLSPACE
+        url: https://suchismit.me/work/nullspace/
+        summary: Exploratory computational imaging and inverse problems work on measurement operators, reconstruction, null spaces, iterative methods, and learned priors.
