@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://suchismit.me/sitemap.xml
